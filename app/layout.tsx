@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Providers } from "./providers";
 import { Metadata } from "next";
 import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const title =
   "Platforms Starter Kit – The all-in-one starter kit for building multi-tenant applications.";
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
     title,
     description,
     images: [image],
-    creator: "@vercel",
+    creator: "@farajabien",
   },
-  metadataBase: new URL("https://vercel.pub"),
+  metadataBase: new URL("https://fbien.com"),
 };
 
 export default function RootLayout({
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body className={cn(cal.variable, inter.variable)}>
         <Providers>
           {children}
+          <ThemeToggle />
           <Analytics />
         </Providers>
       </body>

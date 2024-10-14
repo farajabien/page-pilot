@@ -3,17 +3,19 @@
 import { getSession } from "@/lib/auth";
 import {
   addDomainToVercel,
+  getApexDomain,
   removeDomainFromVercelProject,
+  removeDomainFromVercelTeam,
   validDomainRegex,
 } from "@/lib/domains";
-import { getBlurDataURL } from "@/lib/utils";
 import { put } from "@vercel/blob";
-import { eq } from "drizzle-orm";
+import { count, eq, ilike, or } from "drizzle-orm";
 import { customAlphabet } from "nanoid";
 import { revalidateTag } from "next/cache";
 import { withPostAuth, withSiteAuth } from "./auth";
 import db from "./db";
 import { SelectPost, SelectSite, posts, sites, users } from "./schema";
+import { getBlurDataURL } from "@/lib/utils";
 
 const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
@@ -86,7 +88,7 @@ export const updateSite = withSiteAuth(
           await Promise.all([
             addDomainToVercel(value),
             // Optional: add www subdomain as well and redirect to apex domain
-            // addDomainToVercel(`www.${value}`),
+            addDomainToVercel(`www.${value}`),
           ]);
 
           // empty value means the user wants to remove the custom domain
@@ -105,12 +107,20 @@ export const updateSite = withSiteAuth(
         if (site.customDomain && site.customDomain !== value) {
           response = await removeDomainFromVercelProject(site.customDomain);
 
-          /* Optional: remove domain from Vercel team 
+          //  Optional: remove domain from Vercel team
 
           // first, we need to check if the apex domain is being used by other sites
           const apexDomain = getApexDomain(`https://${site.customDomain}`);
-          const domainCount = await db.select({ count: count() }).from(sites).where(or(eq(sites.customDomain, apexDomain), ilike(sites.customDomain, `%.${apexDomain}`))).then((res) => res[0].count);
-
+          const domainCount = await db
+            .select({ count: count() })
+            .from(sites)
+            .where(
+              or(
+                eq(sites.customDomain, apexDomain),
+                ilike(sites.customDomain, `%.${apexDomain}`),
+              ),
+            )
+            .then((res) => res[0].count);
 
           // if the apex domain is being used by other sites
           // we should only remove it from our Vercel project
@@ -119,12 +129,8 @@ export const updateSite = withSiteAuth(
           } else {
             // this is the only site using this apex domain
             // so we can remove it entirely from our Vercel team
-            await removeDomainFromVercelTeam(
-              site.customDomain
-            );
+            await removeDomainFromVercelTeam(site.customDomain);
           }
-          
-          */
         }
       } else if (key === "image" || key === "logo") {
         if (!process.env.BLOB_READ_WRITE_TOKEN) {

@@ -48,12 +48,12 @@ export async function generateMetadata({
     icons: [logo],
     metadataBase: new URL(`https://${domain}`),
     // Optional: Set canonical URL to custom domain if it exists
-    // ...(params.domain.endsWith(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) &&
-    //   data.customDomain && {
-    //     alternates: {
-    //       canonical: `https://${data.customDomain}`,
-    //     },
-    //   }),
+    ...(params.domain.endsWith(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) &&
+      data.customDomain && {
+        alternates: {
+          canonical: `https://${data.customDomain}`,
+        },
+      }),
   };
 }
 
@@ -103,7 +103,7 @@ export default async function SiteLayout({
       <div className="mt-20">{children}</div>
 
       {domain == `demo.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}` ||
-      domain == `platformize.co` ? (
+      domain == `fbien.com` ? (
         <CTA />
       ) : (
         <ReportAbuse />
