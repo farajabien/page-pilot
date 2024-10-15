@@ -17,11 +17,17 @@ export async function generateMetadata({
   const slug = decodeURIComponent(params.slug);
 
   const [data, siteData] = await Promise.all([
-    getPostData(domain, slug),
-    getSiteData(domain),
+    getPostData(domain, slug).catch((err) => {
+      console.error("Error fetching post data:", err);
+      return null; // or some fallback data
+    }),
+    getSiteData(domain).catch((err) => {
+      console.error("Error fetching site data:", err);
+      return null; // or some fallback data
+    }),
   ]);
   if (!data || !siteData) {
-    return {};
+    return null;
   }
   const { title, description } = data;
 
@@ -29,13 +35,13 @@ export async function generateMetadata({
     title,
     description,
     openGraph: {
-      title: title || "Default Title",
-      description: description || "Default description",
+      title,
+      description,
     },
     twitter: {
       card: "summary_large_image",
-      title: title || "",
-      description: description || "",
+      title,
+      description,
       creator: "@vercel",
     },
     // Optional: Set canonical URL to custom domain if it exists
@@ -58,7 +64,8 @@ export async function generateStaticParams() {
       },
     })
     .from(posts)
-    .leftJoin(sites, eq(posts.siteId, sites.id));
+    .leftJoin(sites, eq(posts.siteId, sites.id))
+    .where(eq(sites.subdomain, "demo")); // feel free to remove this filter if you want to generate paths for all posts
 
   const allPaths = allPosts
     .flatMap(({ site, slug }) => [
@@ -165,13 +172,9 @@ export default async function SitePostPage({
       )}
       {data.adjacentPosts && (
         <div className="mx-5 mb-20 grid max-w-screen-xl grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 xl:mx-auto xl:grid-cols-3">
-          {data.adjacentPosts.map((data: any, index: number) =>
-            BlogCard ? (
-              <BlogCard key={index} data={data} />
-            ) : (
-              <div key={index}>Loading...</div>
-            ),
-          )}
+          {data.adjacentPosts.map((data: any, index: number) => (
+            <BlogCard key={index} data={data} />
+          ))}
         </div>
       )}
     </>
