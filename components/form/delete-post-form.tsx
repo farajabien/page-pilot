@@ -12,25 +12,25 @@ export default function DeletePostForm({ postName }: { postName: string }) {
   const { id } = useParams() as { id: string };
   const router = useRouter();
 
-  // const handleDelete = async (data: FormData): Promise<void> => {
-  //   if (!window.confirm("Are you sure you want to delete your post?")) {
-  //     return; // Explicitly return undefined if the user cancels
-  //   }
-  //   const res = await deletePost(data, id, "delete");
+  const handleDelete = async (data: FormData): Promise<void> => {
+    if (!window.confirm("Are you sure you want to delete your post?")) {
+      return; // Explicitly return undefined if the user cancels
+    }
+    const res = await deletePost(data, id, "delete");
 
-  //   if (res.error) {
-  //     toast.error(res.error);
-  //   } else {
-  //     va.track("Deleted Post");
-  //     router.refresh();
-  //     router.push(`/site/${res.siteId}`);
-  //     toast.success(`Successfully deleted post!`);
-  //   }
-  // };
+    if (res.error) {
+      toast.error(res.error);
+    } else {
+      va.track("Deleted Post");
+      router.refresh();
+      router.push(`/site/${res.siteId}`);
+      toast.success(`Successfully deleted post!`);
+    }
+  };
 
   return (
     <form
-      // action={handleDelete}
+      action={handleDelete}
       className="rounded-lg border border-red-600 bg-white dark:bg-black"
     >
       <div className="relative flex flex-col space-y-4 p-5 sm:p-10">
