@@ -21,7 +21,7 @@ export async function generateMetadata({
     getSiteData(domain),
   ]);
   if (!data || !siteData) {
-    return null;
+    return {};
   }
   const { title, description } = data;
 
@@ -29,22 +29,22 @@ export async function generateMetadata({
     title,
     description,
     openGraph: {
-      title,
-      description,
+      title: title || "Default Title",
+      description: description || "Default description",
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: title || "",
+      description: description || "",
       creator: "@vercel",
     },
     // Optional: Set canonical URL to custom domain if it exists
-    // ...(params.domain.endsWith(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) &&
-    //   siteData.customDomain && {
-    //     alternates: {
-    //       canonical: `https://${siteData.customDomain}/${params.slug}`,
-    //     },
-    //   }),
+    ...(params.domain.endsWith(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) &&
+      siteData.customDomain && {
+        alternates: {
+          canonical: `https://${siteData.customDomain}/${params.slug}`,
+        },
+      }),
   };
 }
 
@@ -58,8 +58,7 @@ export async function generateStaticParams() {
       },
     })
     .from(posts)
-    .leftJoin(sites, eq(posts.siteId, sites.id))
-    .where(eq(sites.subdomain, "demo")); // feel free to remove this filter if you want to generate paths for all posts
+    .leftJoin(sites, eq(posts.siteId, sites.id));
 
   const allPaths = allPosts
     .flatMap(({ site, slug }) => [
@@ -94,13 +93,13 @@ export default async function SitePostPage({
     <>
       <div className="flex flex-col items-center justify-center">
         <div className="m-auto w-full text-center md:w-7/12">
-          <p className="m-auto my-5 w-10/12 text-sm font-light text-stone-500 md:text-base dark:text-stone-400">
+          <p className="m-auto my-5 w-10/12 text-sm font-light text-stone-500 dark:text-stone-400 md:text-base">
             {toDateString(data.createdAt)}
           </p>
-          <h1 className="mb-10 font-title text-3xl font-bold text-stone-800 md:text-6xl dark:text-white">
+          <h1 className="mb-10 font-title text-3xl font-bold text-stone-800 dark:text-white md:text-6xl">
             {data.title}
           </h1>
-          <p className="text-md m-auto w-10/12 text-stone-600 md:text-lg dark:text-stone-400">
+          <p className="text-md m-auto w-10/12 text-stone-600 dark:text-stone-400 md:text-lg">
             {data.description}
           </p>
         </div>
@@ -129,7 +128,7 @@ export default async function SitePostPage({
                 </div>
               )}
             </div>
-            <div className="text-md ml-3 inline-block align-middle md:text-lg dark:text-white">
+            <div className="text-md ml-3 inline-block align-middle dark:text-white md:text-lg">
               by <span className="font-semibold">{data.site?.user?.name}</span>
             </div>
           </div>

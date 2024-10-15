@@ -7,15 +7,15 @@ import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const title =
-  "Platforms Starter Kit – The all-in-one starter kit for building multi-tenant applications.";
+  "Page Pilot – Your multi-tenant blogging platform for East Africa.";
 const description =
-  "The Platforms Starter Kit is a full-stack Next.js app with multi-tenancy and custom domain support. Built with Next.js App Router, Vercel Postgres and the Vercel Domains API.";
-const image = "https://vercel.pub/thumbnail.png";
+  "Page Pilot is a free platform that empowers users to create and manage multiple blogs with custom domains, tailored for SEO, analytics, and monetization.";
+const image = "https://fbien.com/path/to/image.png";
 
 export const metadata: Metadata = {
   title,
   description,
-  icons: ["https://vercel.pub/favicon.ico"],
+  icons: ["https://fbien.com/favicon.ico"],
   openGraph: {
     title,
     description,
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     title,
     description,
     images: [image],
-    creator: "@farajabien",
+    creator: "@your_twitter_handle",
   },
-  metadataBase: new URL("https://fbien.com"),
+  metadataBase: new URL("https://your-domain.com"),
 };
 
 export default function RootLayout({
