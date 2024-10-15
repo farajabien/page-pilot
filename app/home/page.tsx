@@ -56,6 +56,23 @@ export default function HomePage() {
               </Link>
             </CardContent>
           </Card>
+
+          <Card className="overflow-hidden shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-2xl">Use Cases</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="list-inside list-disc space-y-2 text-muted-foreground">
+                <li>Personal Blogging</li>
+                <li>Professional Portfolios</li>
+                <li>Niche Content Creation</li>
+                <li>SEO-Focused Sites</li>
+                <li>Affiliate Marketing</li>
+                <li>Business Promotion</li>
+                <li>Community Engagement</li>
+              </ul>
+            </CardContent>
+          </Card>
         </div>
       </main>
 
