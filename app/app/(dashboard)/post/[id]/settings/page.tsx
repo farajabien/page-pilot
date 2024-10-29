@@ -5,11 +5,12 @@ import { updatePostMetadata } from "@/lib/actions";
 import DeletePostForm from "@/components/form/delete-post-form";
 import db from "@/lib/db";
 
-export default async function PostSettings({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function PostSettings(
+  props: {
+    params: Promise<{ id: string }>;
+  }
+) {
+  const params = await props.params;
   const session = await getSession();
   if (!session) {
     redirect("/login");

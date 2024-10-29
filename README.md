@@ -1,14 +1,14 @@
 # PagePilot
 
-**PagePilot** is a free, multi-tenant blogging platform that allows users to create and manage multiple sites from a single account. Each site can have a custom domain, making it easy to target specific SEO niches and build a personal or professional online presence.
+**PagePilot** is a free, multi-tenant blogging platform allowing users to create and manage multiple sites from a single account. Each site can have a custom domain, enabling SEO niche targeting and easy personal or professional online presence building.
 
 ## Features
 
-- **Create Multiple Blogs**: Users can manage different blogs under one account.
+- **Multi-Blog Management**: Easily manage multiple blogs from one account.
 - **Custom Domains**: Link your blogs to custom domains for a professional touch.
 - **SEO Optimization**: Tailor each blog for targeted SEO performance.
 - **Analytics**: Track traffic and performance of your blogs.
-- **Free & User-Friendly**: No upfront fees; start right away.
+- **Free & User-Friendly**: Start right away with no upfront fees.
 
 ## Getting Started
 
@@ -25,25 +25,39 @@
 
 ### Use Cases for PagePilot
 
-1. **Personal Blogging**: Users can create personal blogs to share thoughts, experiences, or hobbies.
-2. **Professional Portfolios**: Creatives can showcase their work and projects with custom domains.
-3. **Niche Content Creation**: Target specific audiences with tailored content in various niches.
-4. **SEO-Focused Sites**: Build and optimize multiple blogs for improved search engine visibility.
-5. **Affiliate Marketing**: Integrate affiliate links to monetize blogs while providing valuable content.
-6. **Business Promotion**: Companies can create blogs to engage customers and promote products.
-7. **Community Engagement**: Non-profits and organizations can run blogs to keep their communities informed.
+- **Personal Blogging**: Users can create personal blogs to share thoughts, experiences, or hobbies.
+- **Professional Portfolios**: Creatives can showcase their work and projects with custom domains.
+- **Niche Content Creation**: Target specific audiences with tailored content in various niches.
+- **Business Promotion**: Engage customers and promote products through blog content.
 
 ## Built With
 
-- **Next.js**: Framework for server-side rendering.
-- **Vercel**: Hosting and deployment platform.
-- **Tailwind CSS**: Styling for responsive design.
-- **Prisma**: Database management for user and site data.
+- **Next.js App Router**: Enables optimized, server-side rendering, allowing for a seamless user experience and fast load times.
+- **Tailwind CSS**: A utility-first CSS framework for responsive, highly customizable styling.
+- **Tremor**: Provides visually appealing, easy-to-integrate charts and data visualizations.
+- **Prisma**: A powerful ORM that enables efficient, type-safe database interactions.
+- **Novel**: A WYSIWYG editor offering a rich text-editing experience for creating blog content.
+- **Vercel Postgres**: A scalable, managed PostgreSQL database service.
+- **Vercel Blob**: Secure, scalable storage for image uploads.
+- **NextAuth.js**: Provides robust authentication solutions for secure user access.
+- **Vercel**: Handles deployment with features like custom domains, free SSL certificates, and a seamless CI/CD pipeline.
 
-## Contribution
+## Contributing
 
-Contributions are welcome! Feel free to fork the repository and submit a pull request with your improvements.
+Contributions are welcome! If you’d like to contribute to PagePilot, follow these steps:
+
+1. **Fork the Repository**: Create a personal copy of the repository.
+2. **Create a New Branch**: Develop your feature or bug fix in a separate branch.
+3. **Submit a Pull Request**: Once complete, submit a pull request with a description of your changes.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Author
+
+**Faraja Bien**
+
+- **Email**: [faraja.bien@example.com](mailto:faraja.bien@example.com)
+- **LinkedIn**: [linkedin.com/in/bienvenufaraja](https://linkedin.com/in/bienvenufaraja)
+- **Twitter**: [@farajabien](https://twitter.com/farajabien)

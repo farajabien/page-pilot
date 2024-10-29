@@ -3,7 +3,8 @@ import { notFound, redirect } from "next/navigation";
 import Editor from "@/components/editor";
 import db from "@/lib/db";
 
-export default async function PostPage({ params }: { params: { id: string } }) {
+export default async function PostPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const session = await getSession();
   if (!session) {
     redirect("/login");

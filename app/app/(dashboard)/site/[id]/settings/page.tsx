@@ -3,11 +3,12 @@ import { updateSite } from "@/lib/actions";
 import DeleteSiteForm from "@/components/form/delete-site-form";
 import db from "@/lib/db";
 
-export default async function SiteSettingsIndex({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function SiteSettingsIndex(
+  props: {
+    params: Promise<{ id: string }>;
+  }
+) {
+  const params = await props.params;
   const data = await db.query.sites.findFirst({
     where: (sites, { eq }) => eq(sites.id, decodeURIComponent(params.id)),
   });

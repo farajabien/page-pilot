@@ -32,7 +32,7 @@ export default function HomePage() {
                 expertise tailored for non-technical founders.
               </p>
               <Link href="https://tech-cofounder.fbien.com" passHref>
-                <Button className="w-full">
+                <Button className="w-full" aria-label="Visit my tech services">
                   Visit My Tech Services
                   <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -56,7 +56,10 @@ export default function HomePage() {
                 href={`https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN === "localhost" ? "app.localhost.com" : "app.fbien.com"}`}
                 passHref
               >
-                <Button className="group mt-4 w-full">
+                <Button
+                  className="group mt-4 w-full"
+                  aria-label="Get started with Page Pilot"
+                >
                   Get Started with Page Pilot
                   <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -75,20 +78,47 @@ export default function HomePage() {
               <Link
                 href="https://linkedin.com/in/bienvenufaraja"
                 target="_blank"
+                passHref
               >
-                <Button variant="link">LinkedIn</Button>
+                <Button variant="link" aria-label="LinkedIn profile">
+                  LinkedIn
+                </Button>
               </Link>
-              <Link href="https://www.youtube.com/@farajabien" target="_blank">
-                <Button variant="link">YouTube</Button>
+              <Link
+                href="https://www.youtube.com/@farajabien"
+                target="_blank"
+                passHref
+              >
+                <Button variant="link" aria-label="YouTube channel">
+                  YouTube
+                </Button>
               </Link>
-              <Link href="https://twitter.com/farajabien" target="_blank">
-                <Button variant="link">Twitter</Button>
+              <Link
+                href="https://twitter.com/farajabien"
+                target="_blank"
+                passHref
+              >
+                <Button variant="link" aria-label="Twitter profile">
+                  Twitter
+                </Button>
               </Link>
-              <Link href="https://tiktok.com/@farajabien" target="_blank">
-                <Button variant="link">TikTok</Button>
+              <Link
+                href="https://tiktok.com/@farajabien"
+                target="_blank"
+                passHref
+              >
+                <Button variant="link" aria-label="TikTok profile">
+                  TikTok
+                </Button>
               </Link>
-              <Link href="https://medium.com/@faraja.bien" target="_blank">
-                <Button variant="link">Medium Blog</Button>
+              <Link
+                href="https://medium.com/@faraja.bien"
+                target="_blank"
+                passHref
+              >
+                <Button variant="link" aria-label="Medium blog">
+                  Medium Blog
+                </Button>
               </Link>
             </CardContent>
           </Card>

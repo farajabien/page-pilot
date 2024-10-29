@@ -1,41 +1,11 @@
 import { getSession } from "@/lib/auth";
 import { notFound, redirect } from "next/navigation";
-import AnalyticsComponent from "@/components/analytics";
 import db from "@/lib/db";
 
-// Add these imports
-import { getTinybird } from "@/lib/tinybird";
-
-// New function to fetch analytics data from Tinybird
-async function fetchAnalyticsData(domain: string) {
-  const tb = getTinybird();
-
-  // Fetch visitor data
-  const visitorData = await tb.query("visitor_query", { domain });
-
-  // Fetch top pages
-  const topPages = await tb.query("top_pages_query", { domain });
-
-  // Fetch top referrers
-  const topReferrers = await tb.query("top_referrers_query", { domain });
-
-  // Fetch top countries
-  const topCountries = await tb.query("top_countries_query", { domain });
-
-  return {
-    visitorData: visitorData.data,
-    topPages: topPages.data,
-    topReferrers: topReferrers.data,
-    topCountries: topCountries.data,
-  };
-}
+type Params = Promise<{ slug: string }>;
 
 // Update this type definition to be compatible with Next.js PageProps
-export default async function SiteAnalytics({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function SiteAnalytics({ params }: { params: Params }) {
   const session = await getSession();
   if (!session) {
     redirect("/login");
@@ -52,7 +22,6 @@ export default async function SiteAnalytics({
   const url = `${data.subdomain}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`;
 
   // Fetch analytics data
-  const analyticsData = await fetchAnalyticsData(url);
 
   return (
     <>
@@ -71,7 +40,7 @@ export default async function SiteAnalytics({
           </a>
         </div>
       </div>
-      <AnalyticsComponent analyticsData={analyticsData} />
+      Analytics data for {(await params).slug}
     </>
   );
 }

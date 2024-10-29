@@ -6,10 +6,8 @@ import {
 import { DomainVerificationStatusProps } from "@/lib/types";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  _req: Request,
-  { params }: { params: { slug: string } },
-) {
+export async function GET(_req: Request, props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const domain = decodeURIComponent(params.slug);
   let status: DomainVerificationStatusProps = "Valid Configuration";
 

@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { Providers } from "./providers";
 import { Metadata } from "next";
 import { cn } from "@/lib/utils";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const title =
   "Page Pilot – Your multi-tenant blogging platform for East Africa.";
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
     images: [image],
     creator: "@your_twitter_handle",
   },
-  metadataBase: new URL("https://your-domain.com"),
+  metadataBase: new URL("https://fbien.com"),
 };
 
 export default function RootLayout({
@@ -41,7 +40,7 @@ export default function RootLayout({
       <body className={cn(cal.variable, inter.variable)}>
         <Providers>
           {children}
-          <ThemeToggle />
+
           <script
             defer
             src="https://unpkg.com/@tinybirdco/flock.js"

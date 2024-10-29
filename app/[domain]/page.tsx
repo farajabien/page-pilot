@@ -31,11 +31,12 @@ export async function generateStaticParams() {
   return allPaths;
 }
 
-export default async function SiteHomePage({
-  params,
-}: {
-  params: { domain: string };
-}) {
+export default async function SiteHomePage(
+  props: {
+    params: Promise<{ domain: string }>;
+  }
+) {
+  const params = await props.params;
   const domain = decodeURIComponent(params.domain);
   const [data, posts] = await Promise.all([
     getSiteData(domain),

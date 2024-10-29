@@ -4,13 +4,18 @@ import { notFound, redirect } from "next/navigation";
 import SiteSettingsNav from "./nav";
 import db from "@/lib/db";
 
-export default async function SiteAnalyticsLayout({
-  params,
-  children,
-}: {
-  params: { id: string };
-  children: ReactNode;
-}) {
+export default async function SiteAnalyticsLayout(
+  props: {
+    params: Promise<{ id: string }>;
+    children: ReactNode;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   const session = await getSession();
   if (!session) {
     redirect("/login");
