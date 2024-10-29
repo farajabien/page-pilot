@@ -58,6 +58,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 **Faraja Bien**
 
-- **Email**: [faraja.bien@example.com](mailto:faraja.bien@example.com)
+- **Email**: [faraja.bien@gmail.com](mailto:faraja.bien@gmail.com)
 - **LinkedIn**: [linkedin.com/in/bienvenufaraja](https://linkedin.com/in/bienvenufaraja)
 - **Twitter**: [@farajabien](https://twitter.com/farajabien)
