@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import Sites from "@/components/sites";
-import OverviewStats from "@/components/overview-stats";
+// import OverviewStats from "@/components/overview-stats";
 import Posts from "@/components/posts";
 import Link from "next/link";
 import PlaceholderCard from "@/components/placeholder-card";
@@ -13,7 +13,7 @@ export default function Overview() {
         <h1 className="font-cal text-3xl font-bold dark:text-white">
           Overview
         </h1>
-        <OverviewStats />
+        {/* <OverviewStats /> */} Overview stats coming soon
       </div>
 
       <div className="flex flex-col space-y-6">

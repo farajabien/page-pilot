@@ -27,6 +27,7 @@ import {
 } from "recharts";
 import { AlertCircle } from "lucide-react";
 
+// Define the type for analytics data
 type AnalyticsData = {
   date: string;
   pageviews: number;
@@ -41,10 +42,15 @@ export default function OverviewStats() {
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        const response = await fetch("/api/analytics");
+        // Fetch analytics data from Tinybird
+        const response = await fetch(
+          `${process.env.TINYBIRD_HOST}/v0/entities/your_entity_name?token=${process.env.TINYBIRD_TOKEN}`,
+        );
+
         if (!response.ok) {
           throw new Error("Failed to fetch analytics data");
         }
+
         const data: AnalyticsData[] = await response.json();
         setAnalyticsData(data);
         setIsLoading(false);

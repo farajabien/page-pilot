@@ -20,7 +20,6 @@ export const authOptions: NextAuthOptions = {
           image: profile.avatar_url,
         };
       },
-      
     }),
   ],
   pages: {
