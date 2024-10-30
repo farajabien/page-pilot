@@ -9,115 +9,66 @@ export default function HomePage() {
       <header className="border-b border-border py-6">
         <div className="container mx-auto px-4">
           <h1 className="text-center text-4xl font-extrabold text-primary">
-            Faraja Bien
+            ChatPilot
           </h1>
           <p className="text-center text-lg text-muted-foreground">
-            Technical Expertise & Page Customization Solutions
+            Your Multi-Tenant Solution for Custom AI Chatbots
           </p>
         </div>
       </header>
 
       <main className="container mx-auto flex-grow px-4 py-8">
         <div className="mx-auto max-w-3xl space-y-8">
-          {/* Section: Tech Co-Founder Services */}
-          <Card className="overflow-hidden shadow-lg">
-            <CardHeader className="border-b border-border bg-primary/10">
-              <CardTitle className="text-center text-3xl font-semibold">
-                Need a Tech Co-Founder?
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-6 text-center">
-              <p className="mb-4 text-muted-foreground">
-                Turn your startup vision into reality with my technical
-                expertise tailored for non-technical founders.
-              </p>
-              <Link href="https://tech-cofounder.fbien.com" passHref>
-                <Button className="w-full" aria-label="Visit my tech services">
-                  Visit My Tech Services
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          {/* Section: Page Pilot Intro */}
+          {/* Section: Introduction */}
           <Card>
             <CardHeader>
               <CardTitle className="text-center text-2xl">
-                Page Pilot - Your Page Customization Solution
+                Coming Soon: ChatPilot
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-center text-muted-foreground">
-                Create, customize, and launch web pages effortlessly with Page
-                Pilot.
+                Create, customize, and deploy your own AI chatbots with dedicated domains, tailored knowledge bases, and a seamless management dashboard.
               </p>
-              <Link
-                href={`https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN === "localhost" ? "app.localhost.com" : "app.fbien.com"}`}
-                passHref
-              >
-                <Button
-                  className="group mt-4 w-full"
-                  aria-label="Get started with Page Pilot"
-                >
-                  Get Started with Page Pilot
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
             </CardContent>
           </Card>
 
-          {/* Section: Social Media Links */}
+          {/* Section: Features Highlight */}
+          <Card className="overflow-hidden shadow-lg">
+            <CardHeader className="border-b border-border bg-primary/10">
+              <CardTitle className="text-center text-3xl font-semibold">
+                Key Features
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6 text-center">
+              <ul className="list-disc list-inside">
+                <li>Multi-tenant architecture for resource isolation</li>
+                <li>Custom domain handling for each chatbot</li>
+                <li>Easy document upload for knowledge base management</li>
+                <li>Simple analytics to track usage</li>
+                <li>Flexible pricing plans to suit your needs</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          {/* Section: Stay Updated */}
           <Card className="overflow-hidden shadow-lg">
             <CardHeader>
               <CardTitle className="text-center text-2xl">
-                Connect with Me
+                Stay Updated
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col items-center space-y-2">
+              <p className="text-center text-muted-foreground">
+                Sign up to be notified when ChatPilot launches!
+              </p>
               <Link
-                href="https://linkedin.com/in/bienvenufaraja"
-                target="_blank"
+                href="/signup"
                 passHref
               >
-                <Button variant="link" aria-label="LinkedIn profile">
-                  LinkedIn
-                </Button>
-              </Link>
-              <Link
-                href="https://www.youtube.com/@farajabien"
-                target="_blank"
-                passHref
-              >
-                <Button variant="link" aria-label="YouTube channel">
-                  YouTube
-                </Button>
-              </Link>
-              <Link
-                href="https://twitter.com/farajabien"
-                target="_blank"
-                passHref
-              >
-                <Button variant="link" aria-label="Twitter profile">
-                  Twitter
-                </Button>
-              </Link>
-              <Link
-                href="https://tiktok.com/@farajabien"
-                target="_blank"
-                passHref
-              >
-                <Button variant="link" aria-label="TikTok profile">
-                  TikTok
-                </Button>
-              </Link>
-              <Link
-                href="https://medium.com/@faraja.bien"
-                target="_blank"
-                passHref
-              >
-                <Button variant="link" aria-label="Medium blog">
-                  Medium Blog
+                <Button className="group mt-4 w-full" aria-label="Sign up for updates">
+                  Sign Up for Updates
+                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
             </CardContent>
@@ -127,7 +78,7 @@ export default function HomePage() {
 
       <footer className="border-t border-border py-4">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Faraja Bien. All rights reserved.
+          © {new Date().getFullYear()} ChatPilot. All rights reserved.
         </div>
       </footer>
     </div>
