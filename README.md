@@ -1,63 +1,142 @@
-# PagePilot
+# ChatPilot
 
-**PagePilot** is a free, multi-tenant blogging platform allowing users to create and manage multiple sites from a single account. Each site can have a custom domain, enabling SEO niche targeting and easy personal or professional online presence building.
+A multi-tenant platform for creating and deploying custom AI chatbots with dedicated domains. Built on the Vercel AI Chatbot starter, extended with multi-tenant capabilities.
 
-## Features
+## Core Concept
 
-- **Multi-Blog Management**: Easily manage multiple blogs from one account.
-- **Custom Domains**: Link your blogs to custom domains for a professional touch.
-- **SEO Optimization**: Tailor each blog for targeted SEO performance.
-- **Analytics**: Track traffic and performance of your blogs.
-- **Free & User-Friendly**: Start right away with no upfront fees.
+- Users create workspaces
+- Each workspace can have multiple chatbots
+- Each chatbot gets its own custom domain
+- Chatbots are trained on user-provided knowledge bases
+- Deploy and manage multiple chatbots from one dashboard
 
-## Getting Started
+## Technical Foundation
 
-1. **Login**: Visit [PagePilot](https://your-domain.com) and create an account or log in.
-2. **Create Your Blog**: Set up a new blog with a few clicks.
-3. **Add a Custom Domain**: Link your own domain for a professional look.
-4. **Start Blogging**: Create posts, add tags, and publish your content.
+```
+Base: Vercel AI Chatbot Starter
++ Multi-tenant architecture
++ Custom domain handling
++ Knowledge base management
+```
 
-## Monetization Strategies
+## Key Components (Already Available)
 
-1. **Ad Revenue**: Display ads on user-generated blogs.
-2. **Affiliate Marketing**: Integrate affiliate links for revenue sharing.
-3. **Premium Features**: Offer advanced SEO tools or additional site creation options as paid add-ons.
+- ✅ Next.js App Router
+- ✅ OpenAI/Anthropic integration
+- ✅ Authentication (NextAuth.js)
+- ✅ Database (Vercel Postgres)
+- ✅ File storage (Vercel Blob)
+- ✅ UI components (shadcn/ui)
 
-### Use Cases for PagePilot
+## Need to Build
 
-- **Personal Blogging**: Users can create personal blogs to share thoughts, experiences, or hobbies.
-- **Professional Portfolios**: Creatives can showcase their work and projects with custom domains.
-- **Niche Content Creation**: Target specific audiences with tailored content in various niches.
-- **Business Promotion**: Engage customers and promote products through blog content.
+1. **Multi-tenant System**
 
-## Built With
+   - Workspace management
+   - User-workspace relationships
+   - Resource isolation
 
-- **Next.js App Router**: Enables optimized, server-side rendering, allowing for a seamless user experience and fast load times.
-- **Tailwind CSS**: A utility-first CSS framework for responsive, highly customizable styling.
-- **Tremor**: Provides visually appealing, easy-to-integrate charts and data visualizations.
-- **Prisma**: A powerful ORM that enables efficient, type-safe database interactions.
-- **Novel**: A WYSIWYG editor offering a rich text-editing experience for creating blog content.
-- **Vercel Postgres**: A scalable, managed PostgreSQL database service.
-- **Vercel Blob**: Secure, scalable storage for image uploads.
-- **NextAuth.js**: Provides robust authentication solutions for secure user access.
-- **Vercel**: Handles deployment with features like custom domains, free SSL certificates, and a seamless CI/CD pipeline.
+2. **Chatbot Management**
 
-## Contributing
+   - Creation interface
+   - Settings/customization
+   - Deployment controls
 
-Contributions are welcome! If you’d like to contribute to PagePilot, follow these steps:
+3. **Knowledge Base**
 
-1. **Fork the Repository**: Create a personal copy of the repository.
-2. **Create a New Branch**: Develop your feature or bug fix in a separate branch.
-3. **Submit a Pull Request**: Once complete, submit a pull request with a description of your changes.
+   - Document upload
+   - Text extraction
+   - Vector storage
 
-## License
+4. **Custom Domains**
+   - Domain verification
+   - SSL certification
+   - DNS management
 
-This project is licensed under the [MIT License](LICENSE).
+## MVP Features
 
-## Author
+- Single workspace per user
+- One chatbot per workspace
+- Basic customization
+- File upload for training
+- Custom domain support
+- Simple analytics
+- Usage limits
 
-**Faraja Bien**
+## Initial Architecture
 
-- **Email**: [faraja.bien@gmail.com](mailto:faraja.bien@gmail.com)
-- **LinkedIn**: [linkedin.com/in/bienvenufaraja](https://linkedin.com/in/bienvenufaraja)
-- **Twitter**: [@farajabien](https://twitter.com/farajabien)
+```
+├── app/
+│   ├── api/
+│   │   ├── chat/
+│   │   ├── domains/
+│   │   └── workspaces/
+│   ├── app/
+│   │   ├── workspace/
+│   │   └── settings/
+├── components/
+│   ├── dashboard/
+│   ├── chatbot/
+│   └── knowledge-base/
+└── lib/
+    ├── auth/
+    ├── db/
+    └── ai/
+```
+
+## Development Phases
+
+### Phase 1 (MVP)
+
+1. Set up multi-tenant DB schema
+2. Build workspace management
+3. Create chatbot CRUD
+4. Implement basic knowledge base
+5. Add custom domain support
+
+### Phase 2
+
+1. Team collaboration
+2. Advanced customization
+3. Template marketplace
+4. API access
+
+## Tech Stack
+
+- Next.js 14
+- Vercel AI SDK
+- Vercel Postgres
+- Vercel Blob
+- NextAuth.js
+- shadcn/ui
+- Tailwind CSS
+- OpenAI/Anthropic
+
+## Immediate TODO
+
+1. [ ] Modify DB schema for multi-tenancy
+2. [ ] Create workspace management system
+3. [ ] Build chatbot creator interface
+4. [ ] Implement knowledge base uploader
+5. [ ] Set up custom domain handling
+
+## Business Model
+
+```
+FREE
+- 1 chatbot
+- 100 msgs/month
+- Basic customization
+
+PRO ($29/mo)
+- 3 chatbots
+- 1,000 msgs/month
+- Custom domain
+- Full customization
+
+BUSINESS ($99/mo)
+- 10 chatbots
+- 10,000 msgs/month
+- Priority support
+- API access
+```
